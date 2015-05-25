@@ -65,13 +65,15 @@ module.exports = {
 
   changeOnSpotify: function(uri){
     var song = this.getNextSongToAdd();
-    uri = song.uri;
-    var duration = song.duration;
+    if (song) {
+      uri = song.uri;
+      var duration = song.duration;
 
-    this.addSongOnSpotify(uri);
-    this.time = duration;
+      this.addSongOnSpotify(uri);
+      this.time = duration;
 
-    this.letsGetThePartyStarted();
+      this.letsGetThePartyStarted();
+    }
   },
 
   letsGetThePartyStarted: function(){

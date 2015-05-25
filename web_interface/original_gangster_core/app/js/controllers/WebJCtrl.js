@@ -4,7 +4,7 @@
  * - exposes the model to the template and provides event handlers
  */
 angular.module('webJ', [])
-	.controller('WebJCtrl', function WebJCtrl($scope) {
+	.controller('WebJCtrl', ['$scope', '$location', function WebJCtrl($scope, $location) {
 		'use strict';
 
     var getCookie = function(cname) {
@@ -18,7 +18,7 @@ angular.module('webJ', [])
       return "";
     };
 
-		var hostIP = "192.168.2.7"; //make this something someone can enter (or grab dynamically)
+		var hostIP = $location.host(); //make this something someone can enter (or grab dynamically)
 		var port = "1337";
 		var playlist = $scope.playlist = [];
 
@@ -136,4 +136,4 @@ angular.module('webJ', [])
     window.setInterval(serverAPI.getNotifications, 1000);
 
 
-	});
+	}]);
